@@ -45,6 +45,44 @@
 
 ---
 
+## Métodos
+1. **Nombres descriptivos**: Los nombres de los métodos deben describir claramente su propósito o acción.
+   ```cpp
+   void calcularPromedio(); // Correcto
+   void cp();               // Evitar esto
+   ```
+
+2. **CamelCase**: Usar `camelCase` para los nombres de los métodos, comenzando con minúscula y usando mayúsculas para separar palabras.
+   ```cpp
+   void obtenerDatosUsuario();
+   ```
+
+3. **Verbos al inicio**: Los nombres de los métodos deben comenzar con un verbo que indique la acción que realizan.
+   ```cpp
+   void guardarArchivo(); // Correcto
+   void archivoGuardar(); // Evitar esto
+   ```
+
+4. **Prefijos para accesores y mutadores**:
+   - Usar `get` para métodos que obtienen valores.
+   - Usar `set` para métodos que asignan valores.
+   ```cpp
+   int getEdad();
+   void setEdad(int edad);
+   ```
+
+5. **Métodos privados**: Si el método es privado, puedes usar un prefijo como `_` para distinguirlo.
+   ```cpp
+   class Usuario {
+   private:
+       void _validarDatos();
+   public:
+       void procesarUsuario();
+   };
+   ```
+
+---
+
 ## Comentarios
 1. **Comentarios de línea**: Usar `//` para comentarios breves.
    ```cpp
