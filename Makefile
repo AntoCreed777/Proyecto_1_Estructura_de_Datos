@@ -1,33 +1,27 @@
-# Nombre del ejecutable
-TARGET = salida.out
-
-# Compilador
+# Variables
 CXX = g++
-
-# Opciones de compilación
-CFLAGS = -I ./include -g -Wall
-
-# Directorio para archivos objeto
+CXXFLAGS = -std=c++17 -Wall -g -I ./include
 OBJ_DIR = build
+TARGET = main.out
 
-# Archivos fuente
-SOURCES = ./src/main.cpp ./src/cola_mechon.cpp
-
-# Archivos objeto (guardados en build/)
+# Buscar todos los archivos .cpp en el directorio src
+SOURCES = $(wildcard ./src/*.cpp)
 OBJECTS = $(patsubst ./src/%.cpp, $(OBJ_DIR)/%.o, $(SOURCES))
 
-.PHONY: all clean run debug memoria
+.PHONY: all clean run debug
 
 # Regla por defecto: compilar el programa
 all: $(TARGET)
 
 # Regla para compilar el programa
 $(TARGET): $(OBJECTS)
-	@$(CXX) $(OBJECTS) -o $(TARGET) $(CFLAGS)
+	@echo "Compilando el programa..."
+	@$(CXX) $(OBJECTS) -o $(TARGET) $(CXXFLAGS)
 
 # Regla para compilar los archivos objeto y guardarlos en obj/
 $(OBJ_DIR)/%.o: ./src/%.cpp | $(OBJ_DIR)
-	@$(CXX) -c $< -o $@ $(CFLAGS)
+	@echo "Compilando $<..."
+	@$(CXX) -c $< -o $@ $(CXXFLAGS)
 
 # Crear el directorio obj si no existe
 $(OBJ_DIR):
@@ -35,7 +29,8 @@ $(OBJ_DIR):
 
 # Regla para ejecutar el programa
 run: $(TARGET)
-	@./$(TARGET)
+	@echo "Ejecutando el programa...\n"
+	@./$(TARGET) -p 2 -c 5 -s 1 -t 1
 
 # Regla para debuggear el programa
 debug: $(TARGET)
@@ -45,6 +40,6 @@ debug: $(TARGET)
 memoria: $(TARGET)
 	@valgrind --leak-check=full --track-origins=yes ./$(TARGET)
 
-# Regla para limpiar los archivos objeto y el ejecutable
+# Regla para limpiar los archivos generados
 clean:
 	@rm -rf $(OBJ_DIR) $(TARGET)
