@@ -22,9 +22,10 @@ class Enemigo {
 
         // Se usan cuando _super_enemigo == true
         int _golpes_recibidos;
-        int minimo_golpes_para_dividirse;
-        
+        static const int _minimo_golpes_para_dividirse = 2;
+
     public:
+        
         Enemigo(int vida, int damage, bool super_enemigo);
         ~Enemigo();
         
@@ -41,7 +42,7 @@ class Enemigo {
         int getDamage();
 
        /**
-        * @brief Si no le queda vida, debuelve `true`, en caso contrario, devuelve `false`
+        * @brief Si no le queda vida, devuelve `true`, en caso contrario, devuelve `false`
         */
         bool isDead();
 
@@ -50,5 +51,8 @@ class Enemigo {
          * entonces devuelve `true`, en caso contrario devuelve `false`
          */
         bool seSubdivide();
-
+        /**
+         * @brief Devuelve la vida
+         */
+        int getVida();
 };

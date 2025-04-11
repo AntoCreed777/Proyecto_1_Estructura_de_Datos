@@ -1,0 +1,25 @@
+#include "../include/nodo_cola_mechon.hpp"
+
+NodoColaMechon::NodoColaMechon(Enemigo *enemigo){
+    this->_nodo_siguiente = nullptr;
+    this->_enemigo = enemigo;
+}
+
+NodoColaMechon::~NodoColaMechon(){}
+
+void NodoColaMechon::destructorRecursivo(){
+    delete this->_nodo_siguiente;
+    delete this;
+}
+
+Enemigo* NodoColaMechon::getEnemigo(){
+    return this->_enemigo;
+}
+
+void NodoColaMechon::setNodoSiguiente(NodoColaMechon* nodo_siguiente){
+    this->_nodo_siguiente = nodo_siguiente;
+}
+
+NodoColaMechon* NodoColaMechon::getNodoSiguiente(){
+    return this->_nodo_siguiente;
+}

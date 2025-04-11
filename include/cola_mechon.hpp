@@ -15,8 +15,8 @@
  */
 class ColaMechon {
     private:
-        NodoColaMechon* heap;
-        NodoColaMechon* tail;
+        NodoColaMechon* _head;
+        NodoColaMechon* _tail;
 
     public:
         ColaMechon();
@@ -42,4 +42,6 @@ class ColaMechon {
          * @return `true` cuando esta vacia, `false` cuando esta vacia
          */
         bool isEmpty();
+
+        void duplicacionPrimerEnemigo();
 };
