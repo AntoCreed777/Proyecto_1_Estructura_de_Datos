@@ -29,19 +29,14 @@ class Enemigo {
         Enemigo(int vida, int damage, bool super_enemigo);
         ~Enemigo();
         
-       /**
+        /**
         * @brief Recibe el damage, el cual se le resta a la vida, devuelve `true` si es que murio, en caso contrario, devuelve `false`
         * 
         * @param int `damage` : El damage que se le hace al enemigo
         */
         bool recibeDamage(int damage);
 
-       /**
-        * @brief Devuelve el damage que el enemigo es capaz de hacer
-        */
-        int getDamage();
-
-       /**
+        /**
         * @brief Si no le queda vida, devuelve `true`, en caso contrario, devuelve `false`
         */
         bool isDead();
@@ -51,8 +46,14 @@ class Enemigo {
          * entonces devuelve `true`, en caso contrario devuelve `false`
          */
         bool seSubdivide();
+
         /**
          * @brief Devuelve la vida
          */
-        int getVida();
+        int getVida() const;
+
+        /**
+        * @brief Devuelve el damage que el enemigo es capaz de hacer
+        */
+        int getDamage() const;
 };

@@ -19,12 +19,12 @@ class NodoColaMechon {
         NodoColaMechon(Enemigo* enemigo);
         ~NodoColaMechon();
 
-       /**
-        * Devuelve al enemigo que contiene el nodo
-        */
-        Enemigo* getEnemigo();
+        /**
+         * @brief Funcion que desstruye tanto a si mismo como a todos los demas nodos con los que este ligado
+         */
+        void destructorRecursivo();
 
-       /**
+        /**
         * Permite cambiar el Nodo Siguiente
         */
         void setNodoSiguiente(NodoColaMechon* nodo_siguiente);
@@ -35,4 +35,9 @@ class NodoColaMechon {
          * @return NodoColaMechon* 
          */
         NodoColaMechon* getNodoSiguiente();
+
+        /**
+        * Devuelve al enemigo que contiene el nodo
+        */
+        Enemigo* getEnemigo();
 };

@@ -29,19 +29,27 @@ class ColaMechon {
 
        /**
         * @brief Devuelve al enemigo en el frente de la cola, pero sin eliminarlo.
+        * 
+        * @exception Lanza una excepcion cuando la cola esta vacia
         */
         Enemigo* frontEnemigo();
 
        /**
-        * @brief Elimina al enemigo en el frente de la cola y lo devuelve.
+        * @brief Elimina al enemigo en el frente de la cola.
+        * 
+        * @exception Lanza una excepcion cuando la cola esta vacia
         */
-        Enemigo* popEnemigo();
-
+        void popEnemigo();
 
         /**
          * @return `true` cuando esta vacia, `false` cuando esta vacia
          */
         bool isEmpty();
 
-        void duplicacionPrimerEnemigo();
+        /**
+         * @brief SubDivide al enemigo que esta en el frente de la cola
+         * 
+         * @exception Lanza una excepcion cuando la cola esta vacia
+         */
+        void subDividePrimerEnemigo();
 };
