@@ -3,42 +3,58 @@
 #include "../include/enemigo.hpp"
 #include "../include/nodo_cola_mechon.hpp"
 
-ColaMechon::ColaMechon(){
+ColaMechon::ColaMechon() {
     this->_head = nullptr;
     this->_tail = nullptr;
 }
 
-ColaMechon::~ColaMechon(){}
+ColaMechon::~ColaMechon() {
+    if (this->isEmpty()) return;
 
-void ColaMechon::pushEnemigo(Enemigo *enemigo){
-    NodoColaMechon *new_enemy = new NodoColaMechon(enemigo);   
-    this->_tail->setNodoSiguiente(new_enemy);
-    this->_tail = this->_tail->getNodoSiguiente();
+    this->_head->destructorRecursivo();
 }
 
-Enemigo* ColaMechon::frontEnemigo(){
+void ColaMechon::pushEnemigo(Enemigo *enemigo) {
+    NodoColaMechon *nodo_enemigo = new NodoColaMechon(enemigo);
+
+    if (this->isEmpty()) {
+        this->_head = nodo_enemigo;
+        this->_tail = nodo_enemigo;
+        return;
+    }
+
+    this->_tail->setNodoSiguiente(nodo_enemigo);
+    this->_tail = nodo_enemigo;
+}
+
+Enemigo* ColaMechon::frontEnemigo() {
+    if(this->isEmpty()) throw std::runtime_error("¡No hay enemigos!");
     return this->_head->getEnemigo();
 }
 
-Enemigo* ColaMechon::popEnemigo(){
-    if(this->isEmpty()){
-        throw std::runtime_error("¡No hay enemigos!");
-    }
+void ColaMechon::popEnemigo() {
+    if(this->isEmpty()) throw std::runtime_error("¡No hay enemigos!");
     
     NodoColaMechon *nodo_eliminar = this->_head;
-    Enemigo* enemigo_nodo_head = nodo_eliminar->getEnemigo();
+
+    if (this->_head == this->_tail) this->_tail = nullptr;
     
     this->_head = this->_head->getNodoSiguiente();
     delete nodo_eliminar;
-    return enemigo_nodo_head;
 }
 
-bool ColaMechon::isEmpty(){
+bool ColaMechon::isEmpty() {
     return this->_head == nullptr;
 }
 
-void ColaMechon::duplicacionPrimerEnemigo(){
-    Enemigo *enemigo1, *enemigo2;
+void ColaMechon::subDividePrimerEnemigo() {
+    if(this->isEmpty()) throw std::runtime_error("¡No hay enemigos!");
+
+    if (this->_head->getEnemigo()->getVida() - 1 <= 0 || this->_head->getEnemigo()->getDamage() - 1 <= 0) {
+        throw std::runtime_error("¡El enemigo no puede dividirse más!");
+    }
+
+    Enemigo *enemigo1, *enemigo2;   // 2 enemigos los cuales tienen la misma vida y damage que su padre, pero menos 1 unidad cada uno
     enemigo1 = new Enemigo(this->_head->getEnemigo()->getVida() - 1, this->_head->getEnemigo()->getDamage() - 1, false);
     enemigo2 = new Enemigo(this->_head->getEnemigo()->getVida() - 1, this->_head->getEnemigo()->getDamage() - 1, false);
 

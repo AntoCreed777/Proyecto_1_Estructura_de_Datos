@@ -15,11 +15,11 @@ void FunctionOptimization() {
 }
 
 int main() {
-    FunctionOptimization();
+    //FunctionOptimization();
 
-    int vida, numero_enemigos;
+    int vida_mechon, numero_enemigos;
 
-    std::cin >> vida >> numero_enemigos;
+    std::cin >> vida_mechon >> numero_enemigos;
 
     std::vector<int> vida_enemigos(numero_enemigos);
     std::vector<int> ataque_enemigos(numero_enemigos);
@@ -35,27 +35,44 @@ int main() {
     }
     
     ColaMechon *cola = new ColaMechon();
-    Mechon *mechon = new Mechon();
+
+    rep(i,numero_enemigos) {
+        Enemigo *nuevo_enemigo = new Enemigo(vida_enemigos[i], ataque_enemigos[i], super_enemigos[i]);
+        cola->pushEnemigo(nuevo_enemigo);
+    }
+
+    Mechon *mechon = new Mechon(vida_mechon);
     int damage_acumulado = 0;
 
     while(!cola->isEmpty() && !mechon->isDead()){
         damage_acumulado += mechon->getDamage();
         Enemigo *enemigo = cola->frontEnemigo();
+
+        // Primero el enemigo recibe damage
         enemigo->recibeDamage(mechon->getDamage());
         
         if(enemigo->isDead()){
             cola->popEnemigo();
             continue;
         }
+
         if(enemigo->seSubdivide()){
-            cola->duplicacionPrimerEnemigo();
-            enemigo = cola->frontEnemigo();
+            cola->subDividePrimerEnemigo();
+            enemigo = cola->frontEnemigo(); //Esto porque al sub dividirse se elimino al antiguo enemigo, pero ahora hay 2 nuevos enemigos en la cola
         }
+
+        // Por ultimo, el enemigo recibe damage
         mechon->recibeDamage(enemigo->getDamage());
     }
 
 
-    std::cout << "Hello World" << std::endl;
+    std::cout << damage_acumulado << std::endl;
+
+    if (mechon->isDead()) std::cout << "RIP mechón" << std::endl;
+    else std::cout << "EZ pizi" << std::endl;
+
+    delete cola;
+    delete mechon;
 
     return 0;
 }
