@@ -7,7 +7,7 @@ Enemigo::Enemigo(int vida, int damage, bool super_enemigo) {
     this->_golpes_recibidos = 0;
 }
 
-Enemigo::~Enemigo(){}
+Enemigo::~Enemigo() {}
 
 bool Enemigo::recibeDamage(int damage) {
     // Solo cuando los golpes recibidos no son suficientes para que se subDivida le aplico el damage

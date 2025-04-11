@@ -10,7 +10,9 @@ NodoColaMechon::~NodoColaMechon() {
 }
 
 void NodoColaMechon::destructorRecursivo() {
-    delete this->_nodo_siguiente;
+    if(this->_nodo_siguiente != nullptr) 
+        this->_nodo_siguiente->destructorRecursivo();
+    
     delete this;
 }
 
