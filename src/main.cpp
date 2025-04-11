@@ -52,6 +52,7 @@ int main() {
         enemigo->recibeDamage(mechon->getDamage());
         
         if(enemigo->isDead()){
+            mechon->aumentarEnemigosEliminados();
             cola->popEnemigo();
             continue;
         }

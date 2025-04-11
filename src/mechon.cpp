@@ -14,6 +14,10 @@ void Mechon::recibeDamage(int damage) {
 
 void Mechon::aumentarEnemigosEliminados() {
     this->_enemigos_eliminados++;
+    if(this->_enemigos_eliminados == 5) {
+        this->_enemigos_eliminados = 0;
+        this->_damage += 1;
+    }
 }
 
 bool Mechon::isDead() {
