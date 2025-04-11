@@ -30,7 +30,7 @@ $(OBJ_DIR):
 # Regla para ejecutar el programa
 run: $(TARGET)
 	@echo "Ejecutando el programa...\n"
-	@./$(TARGET) -p 2 -c 5 -s 1 -t 1
+	@./$(TARGET)
 
 # Regla para debuggear el programa
 debug: $(TARGET)

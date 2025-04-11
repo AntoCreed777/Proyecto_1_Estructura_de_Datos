@@ -6,7 +6,7 @@ TARGET = main.out
 
 # Buscar todos los archivos .cpp en el directorio src
 SOURCES = main.cpp
-OBJECTS = $(patsubst ./main.cpp, $(OBJ_DIR)/%.o, $(SOURCES))
+OBJECTS = $(OBJ_DIR)/main.o
 
 .PHONY: all clean run debug
 
@@ -19,7 +19,7 @@ $(TARGET): $(OBJECTS)
 	@$(CXX) $(OBJECTS) -o $(TARGET) $(CXXFLAGS)
 
 # Regla para compilar los archivos objeto y guardarlos en obj/
-$(OBJ_DIR)/%.o: ./src/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@echo "Compilando $<..."
 	@$(CXX) -c $< -o $@ $(CXXFLAGS)
 
@@ -30,7 +30,7 @@ $(OBJ_DIR):
 # Regla para ejecutar el programa
 run: $(TARGET)
 	@echo "Ejecutando el programa...\n"
-	@./$(TARGET) -p 2 -c 5 -s 1 -t 1
+	@./$(TARGET)
 
 # Regla para debuggear el programa
 debug: $(TARGET)
