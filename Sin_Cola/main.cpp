@@ -42,83 +42,100 @@ int main() {
     rep(i,numero_enemigos) {
         while(vida_enemigos[i] > 0) {
             int aux_vida = vida_enemigos[i];
-            vida_enemigos[i] -= damage_mechon;
+            vida_enemigos[i] -= damage_mechon;  //Enemigo recibe damage
 
-            vida_mechon -= ataque_enemigos[i];
+            vida_mechon -= ataque_enemigos[i];  //El mechon recibe damage
 
             acumulador_golpes_mechon++;
             acumulador_golpes_super_enemigo++;
 
+            //Upgrade damage Mechon
             if(acumulador_golpes_mechon == 5) {
                 acumulador_golpes_mechon = 0;
                 damage_mechon++;
             }
             
+            //Aumentar el damage acumulado realizado
             if(vida_enemigos[i] <= 0) {
                 damage_acumulado+=aux_vida;
                 break;
             }
             else damage_acumulado += damage_mechon;
 
+            //SI es un super enemigo y puede cumple requisito para dividirse
             if(super_enemigos[i] && acumulador_golpes_super_enemigo == 2) {
                 dividido = true;
                 break;
             }
 
+            //Si se murio el mechon, finaliza la pelea
             if(vida_mechon <= 0) break;
         }
 
         acumulador_golpes_super_enemigo = 0;
 
-        if(dividido) {
+        //Si se murio el mechon, finaliza la pelea
+        if(vida_mechon <= 0) break;
 
+        if(dividido) {
+            //Los 2 enemigos generados de la divicion de un super enemigo
             int enemigo1[2] = {vida_enemigos[i]-1,ataque_enemigos[i]-1};
             int enemigo2[2] = {vida_enemigos[i]-1,ataque_enemigos[i]-1};
 
+            //Pelea con el primer enemigo
             while (true) {
                 int aux_vida = enemigo1[0];
-                enemigo1[0] -= damage_mechon;
+                enemigo1[0] -= damage_mechon;   //Enemigo recibe damage
     
-                vida_mechon -= enemigo1[1];
+                vida_mechon -= enemigo1[1];     //Mechon recibe damage
 
+                //Upgrade damage Mechon
                 if(acumulador_golpes_mechon == 5) {
                     acumulador_golpes_mechon = 0;
                     damage_mechon++;
                 }
     
+                //Aumentar el damage acumulado realizado
                 if(enemigo1[0] <= 0) {
                     damage_acumulado+=aux_vida;
                     break;
                 }
                 else damage_acumulado += damage_mechon;
     
+                //Si se murio el mechon, finaliza la pelea
                 if(vida_mechon <= 0) break;
             }
 
+            //Si se murio el mechon, finaliza la pelea
             if(vida_mechon <= 0) break;
 
+            //Pelea con el segundo enemigo
             while (true) {
                 int aux_vida = enemigo2[0];
-                enemigo2[0] -= damage_mechon;
+                enemigo2[0] -= damage_mechon;   //Enemigo recibe damage
     
-                vida_mechon -= enemigo2[1];
+                vida_mechon -= enemigo2[1];     //Mechon recibe damage
 
+                //Upgrade damage Mechon
                 if(acumulador_golpes_mechon == 5) {
                     acumulador_golpes_mechon = 0;
                     damage_mechon++;
                 }
     
+                //Aumentar el damage acumulado realizado
                 if(enemigo2[0] <= 0) {
                     damage_acumulado+=aux_vida;
                     break;
                 }
                 else damage_acumulado += damage_mechon;
     
+                //Si se murio el mechon, finaliza la pelea
                 if(vida_mechon <= 0) break;
             }
             dividido = false;
         }
 
+        //Si se murio el mechon, finaliza la pelea
         if(vida_mechon <= 0) break;
 
     }
