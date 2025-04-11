@@ -9,15 +9,14 @@ Enemigo::Enemigo(int vida, int damage, bool super_enemigo) {
 
 Enemigo::~Enemigo() {}
 
-bool Enemigo::recibeDamage(int damage) {
+int Enemigo::recibeDamage(int damage) {
     this->_golpes_recibidos++;
-    // Solo cuando los golpes recibidos no son suficientes para que se subDivida le aplico el damage
-    if(this->_super_enemigo && (this->_golpes_recibidos >= this->_minimo_golpes_para_dividirse) ) {
-        return true;
-    }
 
+    int vida_aux = this->_vida;
     this->_vida -= damage;
-    return this->_vida <= 0;
+
+    if (this->_vida <= 0) return vida_aux;
+    else return damage;
 }
 
 bool Enemigo::isDead() {

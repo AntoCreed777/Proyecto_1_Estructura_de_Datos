@@ -30,11 +30,11 @@ class Enemigo {
         ~Enemigo();
         
         /**
-        * @brief Recibe el damage, el cual se le resta a la vida, devuelve `true` si es que murio, en caso contrario, devuelve `false`
+        * @brief Recibe el damage, el cual se le resta a la vida, se devuelve cual fue el damage efectivo
         * 
         * @param int `damage` : El damage que se le hace al enemigo
         */
-        bool recibeDamage(int damage);
+        int recibeDamage(int damage);
 
         /**
         * @brief Si no le queda vida, devuelve `true`, en caso contrario, devuelve `false`
