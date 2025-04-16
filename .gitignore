@@ -1,8 +1,6 @@
 *.out
 *.exe
-test*
 *.csv
-*.txt
 .idea/*
 .vscode/*
 vgcore*
