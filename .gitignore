@@ -5,3 +5,4 @@
 .vscode/*
 vgcore*
 */build/*.o
+build/*.o

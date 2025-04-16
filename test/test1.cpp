@@ -1,9 +1,9 @@
 #include <iostream> 
 #include <vector>
-#include "../Con_Cola/include/mechon.hpp"
-#include "../Con_Cola/include/cola_mechon.hpp"
-#include "../Con_Cola/include/enemigo.hpp"
-#include "../Con_Cola/include/nodo_cola_mechon.hpp"
+#include "../include/mechon.hpp"
+#include "../include/cola_mechon.hpp"
+#include "../include/enemigo.hpp"
+#include "../include/nodo_cola_mechon.hpp"
 
 #define rep(i,n) for(int i=0;i<(int)n;i++)
 #define repx(i,x,n) for(int i=x;i<(int)n;i++)
