@@ -53,7 +53,7 @@ Tu deber será imprimir un valor numérico y un texto separados por un salto de 
 
 ## 📄 Supuestos
 
-- El Mechon y los Esbirros se atacan a la vez, esto implica que, aunque uno de los 2 muera en algun turno, ambos lograran hacer su respectivo daño.
+- El Mechon y los Esbirros se atacan a la vez, esto implica que, aunque uno de los 2 muera en algun turno, ambos lograran hacer su respectivo daño en dicho turno.
 - Se considera que el mechon logra salvar al pueblo si ya no queda ningun enemigo, independiente de si el Mechon murio o no. 
 
 
@@ -106,7 +106,7 @@ Compila todos los archivos fuente y genera el ejecutable ``main.out`` en el dire
 ```bash
 ./main.out
 ```
-Ejecuta el programa el ejecutable ``main.out``.
+Ejecuta el programa (``main.out``).
 
 ## 📂 Estructura del Proyecto
 ```plaintext
