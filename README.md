@@ -6,17 +6,19 @@
 ## Tecnologias utilizadas en el proyecto
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,github,vscode&perline=12" />
+    <img src="https://skillicons.dev/icons?i=git,github,vscode&perline=5" />
   </a>
 </p>
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=cpp&perline=12" />
+    <img src="https://skillicons.dev/icons?i=cpp&perline=5" />
   </a>
 </p>
 
-
 ## Definicion del Problema
+
+<details>
+  <summary>Haz clic para expandir/contraer</summary>
 
 En el pintoresco pueblo de Olognia habitan talentosos ingenieros informáticos, los cuales han estado desarrollando el Programa Experimental de Poder Extremo (PEPE por sus iniciales). Sin embargo por un error de programación, ¡PEPE se ha salido de control y está apunto de atacar al pueblo!
 
@@ -46,3 +48,98 @@ Se proporcionarán las siguientes 4 líneas de datos, las cuales deberán ser le
 ### Salida Esperada
 
 Tu deber será imprimir un valor numérico y un texto separados por un salto de línea. El valor numérico corresponde al daño total que el mechón causó a los esbirros, mientras que el texto será "EZ pizi" si el mechón logra salvar al pueblo o "RIP mechón" si es que este no logra su cometido.
+
+</details>
+
+## 📄 Supuestos
+
+- El Mechon y los Esbirros se atacan a la vez, esto implica que, aunque uno de los 2 muera en algun turno, ambos lograran hacer su respectivo daño.
+- Se considera que el mechon logra salvar al pueblo si ya no queda ningun enemigo, independiente de si el Mechon murio o no. 
+
+
+
+## ⚙ **Comandos de Compilacion con Make**
+
+### Compilar Todo
+```bash
+make all
+```
+Esta regla compila todos los archivos fuente y genera el ejecutable ``main.out`` en el directorio raíz.
+
+### Ejecutar el programa
+```bash
+make run
+```
+Compila (si es necesario) y ejecuta el programa. El ejecutable ``main.out`` se ejecutará automáticamente.
+
+### Debuggear el programa
+```bash
+make debug
+```
+Compila (si es necesario) el programa y abre el ejecutable ``main.out`` con ``gdb`` para depuración.
+
+### Investigar fugas de memoria
+```bash
+make memoria
+```
+Compila (si es necesario) y ejecuta el programa bajo ``valgrind`` para identificar posibles fugas de memoria. Muestra información detallada sobre las fugas y sus causas.
+
+### Limpiar archivos generados
+```bash
+make clean
+```
+Elimina los archivos generados durante la compilación, incluyendo:
+
+  - Todos los archivos objeto en ``build/``.
+
+  - El ejecutable ``main.out``.
+
+## Comandos de compilacion sin Make
+
+### Compilar Todo
+```bash
+g++ -Wall -g -I ./include ./src/cola_mechon.cpp ./src/enemigo.cpp ./src/main.cpp ./src/mechon.cpp ./src/nodo_cola_mechon.cpp -o main.out
+```
+Compila todos los archivos fuente y genera el ejecutable ``main.out`` en el directorio raíz.
+
+### Ejecutar el programa
+```bash
+./main.out
+```
+Ejecuta el programa el ejecutable ``main.out``.
+
+## 📂 Estructura del Proyecto
+```plaintext
+Protecto_1_Estructura_de_Datos/
+├── Makefile              # Archivo para automatizar la compilación
+├── README.md             # Documentación del proyecto
+├── build                 # Archivos compilados (objetos y binarios)
+│   ├── cola_mechon.o
+│   ├── enemigo.o
+│   ├── main.o
+│   ├── mechon.o
+│   └── nodo_cola_mechon.o
+├── conventions.md        # Convenciones de estilo de código y estándares
+├── include               # Archivos de cabecera (header files)
+│   ├── cola_mechon.hpp
+│   ├── enemigo.hpp
+│   ├── mechon.hpp
+│   └── nodo_cola_mechon.hpp
+├── main.out              # Archivo ejecutable principal
+├── src                   # Implementación del código fuente
+│   ├── cola_mechon.cpp
+│   ├── enemigo.cpp
+│   ├── main.cpp
+│   ├── mechon.cpp
+│   └── nodo_cola_mechon.cpp
+└── test                  # Pruebas del proyecto
+    ├── Makefile          # Archivo de compilación para pruebas
+    ├── test1.cpp         # Codigo de pruebas
+    └── testeo            # Archivos de datos para las pruebas
+        ├── test1.txt
+        ├── test2.txt
+        ├── test3.txt
+        └── test4.txt
+
+```
+
