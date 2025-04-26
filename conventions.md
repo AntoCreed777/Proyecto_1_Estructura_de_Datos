@@ -117,6 +117,8 @@
 
 ## Commits en GitHub
 
+- `feat`: Para agregar una nueva funcionalidad o característica al proyecto.
+  
 - `build`: Cambios que afectan el sistema de compilación o dependencias externas (ej. cambios en el `Makefile`).
   
 - `ci`: Cambios en archivos y scripts de configuración de integración continua.
