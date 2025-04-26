@@ -48,4 +48,5 @@ clean:
 test: $(TARGET)
 	@echo "Iniciando el test...\n"
 	@chmod +x test.sh
+	@dos2unix test.sh
 	@./test.sh
