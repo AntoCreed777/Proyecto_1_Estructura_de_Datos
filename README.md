@@ -106,7 +106,7 @@ Compila todos los archivos fuente y genera el ejecutable ``main.out`` en el dire
 ```bash
 ./main.out
 ```
-Ejecuta el programa el ejecutable ``main.out``.
+Ejecuta el programa (``main.out``).
 
 ## 📂 Estructura del Proyecto
 ```plaintext
