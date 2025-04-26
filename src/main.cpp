@@ -77,8 +77,8 @@ int main() {
 
     std::cout << damage_acumulado << std::endl;
 
-    if (mechon->isDead()) std::cout << "RIP mechón" << std::endl;
-    else std::cout << "EZ pizi" << std::endl;
+    if (cola->isEmpty()) std::cout << "EZ pizi" << std::endl;
+    else std::cout << "RIP mechón" << std::endl;
 
     delete cola;
     delete mechon;

@@ -76,8 +76,8 @@ int main() {
     std::cout << "ciclos: " << contador_ciclos_batalla << std::endl;
     std::cout << "enemigos eliminados: " << enemigos_eliminados << std::endl;
 
-    if (mechon->isDead()) std::cout << "RIP mechón" << std::endl;
-    else std::cout << "EZ pizi" << std::endl;
+    if (cola->isEmpty()) std::cout << "EZ pizi" << std::endl;
+    else std::cout << "RIP mechón" << std::endl;
 
     delete cola;
     delete mechon;
