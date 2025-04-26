@@ -11,7 +11,7 @@
 </p>
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=cpp&perline=5" />
+    <img src="https://skillicons.dev/icons?i=cpp,bash&perline=5" />
   </a>
 </p>
 
@@ -94,6 +94,13 @@ Elimina los archivos generados durante la compilación, incluyendo:
 
   - El ejecutable ``main.out``.
 
+### Realizar test
+```bash
+  make test
+```
+Realiza un test buscando los archivos de entrada y creando archivos de salida para luego compararlos: 
+  - Todos los archivos de salidas en ``test/salida/``.
+
 ## Comandos de compilacion sin Make
 
 ### Compilar Todo
@@ -109,37 +116,35 @@ Compila todos los archivos fuente y genera el ejecutable ``main.out`` en el dire
 Ejecuta el programa (``main.out``).
 
 ## 📂 Estructura del Proyecto
+
 ```plaintext
 Protecto_1_Estructura_de_Datos/
-├── Makefile              # Archivo para automatizar la compilación
-├── README.md             # Documentación del proyecto
-├── build                 # Archivos compilados (objetos y binarios)
-│   ├── cola_mechon.o
-│   ├── enemigo.o
-│   ├── main.o
-│   ├── mechon.o
-│   └── nodo_cola_mechon.o
-├── conventions.md        # Convenciones de estilo de código y estándares
-├── include               # Archivos de cabecera (header files)
-│   ├── cola_mechon.hpp
-│   ├── enemigo.hpp
-│   ├── mechon.hpp
-│   └── nodo_cola_mechon.hpp
-├── main.out              # Archivo ejecutable principal
-├── src                   # Implementación del código fuente
-│   ├── cola_mechon.cpp
-│   ├── enemigo.cpp
-│   ├── main.cpp
-│   ├── mechon.cpp
-│   └── nodo_cola_mechon.cpp
-└── test                  # Pruebas del proyecto
-    ├── Makefile          # Archivo de compilación para pruebas
-    ├── test1.cpp         # Codigo de pruebas
-    └── testeo            # Archivos de datos para las pruebas
-        ├── test1.txt
-        ├── test2.txt
-        ├── test3.txt
-        └── test4.txt
+├── conventions.md                # Convenciones de estilo de código y estándares
+├── include                       # Archivos de cabecera (header files)
+│   ├── cola_mechon.hpp
+│   ├── enemigo.hpp
+│   ├── mechon.hpp
+│   └── nodo_cola_mechon.hpp
+├── main.out                      # Archivo ejecutable principal
+├── Makefile                      # Archivo para automatizar la compilación
+├── README.md                     # Documentación del proyecto
+├── src                           # Implementación del código fuente
+│   ├── cola_mechon.cpp
+│   ├── enemigo.cpp
+│   ├── main.cpp
+│   ├── mechon.cpp
+│   └── nodo_cola_mechon.cpp
+├── test                          # Pruebas del proyecto
+│   ├── esperado                  # Archivos con los resultados esperados de los test
+│   │   ├── test1.txt
+│   │   ├── test2.txt
+│   │   ├── test3.txt
+│   │   └── test4.txt
+│   └── testeo                    # Archivos con los casos a testear
+│       ├── test1.txt
+│       ├── test2.txt
+│       ├── test3.txt
+│       └── test4.txt
+└── test.sh                       # Archivo encargado de la realización de los test
 
 ```
-
