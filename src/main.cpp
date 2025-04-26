@@ -48,15 +48,14 @@ int main() {
 
     while(!cola->isEmpty() && !mechon->isDead()){
         std::cout << ++contador_ciclos_batalla << std::endl;
+        std::cout << "Vida Mechon: " << mechon->getVida() << std::endl; 
         
         Enemigo *enemigo = cola->frontEnemigo();
-
-        std::cout<< enemigo << std::endl;
 
         // Primero el enemigo recibe damage
         int aux = enemigo->recibeDamage(mechon->getDamage());
         damage_acumulado += aux;
-        std::cout << "damage mechon " << aux << std::endl;
+        std::cout << "damage realizado a enemigo " << aux << std::endl;
 
         mechon->recibeDamage(enemigo->getDamage());
         std::cout << "Ataque a mechon " << enemigo->getDamage() << std::endl << std::endl;

@@ -27,3 +27,7 @@ bool Mechon::isDead() {
 int Mechon::getDamage() const{
     return this->_damage;
 }
+
+int Mechon::getVida() const{
+    return this->_vida;
+}

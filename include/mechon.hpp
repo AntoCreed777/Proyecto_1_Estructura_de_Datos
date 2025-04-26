@@ -36,4 +36,9 @@ class Mechon {
          * @brief Devuelve el damage que realiza el mechon
          */
         int getDamage() const;
+
+        /**
+         * @brief Devuelve la vida que le queda al mechon
+         */
+        int getVida() const;
 };
