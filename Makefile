@@ -8,7 +8,7 @@ TARGET = main.out
 SOURCES = $(wildcard ./src/*.cpp)
 OBJECTS = $(patsubst ./src/%.cpp, $(OBJ_DIR)/%.o, $(SOURCES))
 
-.PHONY: all clean run debug
+.PHONY: all clean run debug test
 
 # Regla por defecto: compilar el programa
 all: $(TARGET)
@@ -43,3 +43,9 @@ memoria: $(TARGET)
 # Regla para limpiar los archivos generados
 clean:
 	@rm -rf $(OBJ_DIR) $(TARGET)
+
+# Regla para testear
+test: $(TARGET)
+	@echo "Iniciando el test...\n"
+	@chmod +x test.sh
+	@./test.sh

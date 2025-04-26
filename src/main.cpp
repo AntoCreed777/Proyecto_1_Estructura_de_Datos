@@ -47,28 +47,23 @@ int main() {
     int contador_ciclos_batalla = 0;
 
     while(!cola->isEmpty() && !mechon->isDead()){
-        std::cout << ++contador_ciclos_batalla << std::endl;
-        std::cout << "Vida Mechon: " << mechon->getVida() << std::endl; 
+        ++contador_ciclos_batalla;
         
         Enemigo *enemigo = cola->frontEnemigo();
 
         // Primero el enemigo recibe damage
         int aux = enemigo->recibeDamage(mechon->getDamage());
         damage_acumulado += aux;
-        std::cout << "damage realizado a enemigo " << aux << std::endl;
 
         mechon->recibeDamage(enemigo->getDamage());
-        std::cout << "Ataque a mechon " << enemigo->getDamage() << std::endl << std::endl;
         
         if(enemigo->isDead()){
-            std::cout << "Enemigo muerto" << std::endl << std::endl;
             mechon->aumentarEnemigosEliminados();
             cola->popEnemigo();
             continue;
         }
 
         if(enemigo->seSubdivide()){
-            std::cout << "Se dividio" << std::endl;
             cola->subDividePrimerEnemigo();
             enemigo = cola->frontEnemigo(); //Esto porque al sub dividirse se elimino al antiguo enemigo, pero ahora hay 2 nuevos enemigos en la cola
         }
@@ -78,7 +73,7 @@ int main() {
     std::cout << damage_acumulado << std::endl;
 
     if (cola->isEmpty()) std::cout << "EZ pizi" << std::endl;
-    else std::cout << "RIP mechón" << std::endl;
+    else std::cout << "RIP Mechón" << std::endl;
 
     delete cola;
     delete mechon;
